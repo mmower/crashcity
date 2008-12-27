@@ -1,6 +1,11 @@
 class CrashesController < ApplicationController
   def index
-    @crashes = Crash.find( :all )
+    @crashes = if params[:bundle]
+        app = App.find_by_bundle( params[:bundle] )
+        app.crashes
+      else
+        Crash.find( :all )
+      end
     
     respond_to do |format|
       format.html # index.html.erb
