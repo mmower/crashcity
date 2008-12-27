@@ -65,6 +65,9 @@ class ReportsController < ApplicationController
     match = PATH_REGEX.match( report )
     raise unless match
     path = match[1].chomp
+    
+    # Treat paths to hide possible username
+    path.gsub!( /\/Users\/[^\/]+\//, "/Users/xxxx/" )
 
     match = OSVER_REGEX.match( report )
     raise unless match
