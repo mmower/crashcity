@@ -1,0 +1,12 @@
+log/*
+db/*.sql
+db/schema.rb
+coverage
+config/database.yml
+config/dev_host.rb
+nohup.out
+test/**/*
+script/cover
+public/images/avatars/*
+.DS_Store
+tmp
