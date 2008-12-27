@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :crashes
+
   map.resources :versions
 
   map.resources :applications

@@ -1,0 +1,2 @@
+class CrashesController < ApplicationController
+end
