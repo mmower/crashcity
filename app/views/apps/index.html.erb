@@ -2,6 +2,7 @@
   <% @apps.each do |app| %>
     <tr>
       <td><%= link_to app.bundle, crashes_path( :bundle => app.bundle ) -%></td>
+      <td>(<%= app.crashes_count -%>)</td>
     </tr>
   <% end %>
 </table>
