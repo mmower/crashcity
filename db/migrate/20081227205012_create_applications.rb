@@ -1,7 +1,8 @@
 class CreateApplications < ActiveRecord::Migration
   def self.up
     create_table :applications do |t|
-
+      t.string :process
+      t.string :bundle
       t.timestamps
     end
   end
