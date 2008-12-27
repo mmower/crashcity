@@ -1,7 +1,8 @@
 <h1>Crashes</h1>
+<h2><%= params[:bundle] %></h2>
 <table><% @crashes.each do |crash| %>
   <tr>
-    <th>Bundle</th>
+    <th>ID</th>
     <th>Version</th>
     <th>Code</th>
     <th>Path</th>
@@ -10,7 +11,6 @@
   </tr>
   <tr>
     <td><%= link_to crash.id, report_path( crash.report ) -%></td>
-    <td><%= link_to crash.app.bundle, crashes_path( :bundle => crash.app.bundle ) -%></td>
     <td><%= crash.version -%></td>
     <td><%= crash.code -%></td>
     <td><%= crash.path -%></td>

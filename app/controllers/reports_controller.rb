@@ -1,6 +1,5 @@
 class ReportsController < ApplicationController
   
-  PROCESS_REGEX = Regexp.compile( '^Process:\s*(\w+)', Regexp::MULTILINE )
   BUNDLE_REGEX = Regexp.compile( 'Identifier:\s*([^\r\n]+)', Regexp::MULTILINE )
   VERSION_REGEX = Regexp.compile( 'Version:\s*([^\r\n]+)', Regexp::MULTILINE )
   CODE_REGEX = Regexp.compile( 'Code Type:\s*([^\r\n]+)', Regexp::MULTILINE )
@@ -43,15 +42,11 @@ class ReportsController < ApplicationController
   def create
     report = params[:report][:report]
     
-    match = PROCESS_REGEX.match( report )
-    raise unless match
-    process = match[1].chomp
-    
     match = BUNDLE_REGEX.match( report )
     raise unless match
     bundle = match[1].chomp
     
-    app = App.find_or_create_by_process_and_bundle( process, bundle )
+    app = App.find_or_create_by_bundle( bundle )
     raise unless app
     
     match = VERSION_REGEX.match( report )

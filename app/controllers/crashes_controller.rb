@@ -8,7 +8,7 @@ class CrashesController < ApplicationController
       end
     
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :action => params[:bundle] ? 'bundle_index' : 'index' }
       format.xml  { render :xml => @crashes }
     end
   end
