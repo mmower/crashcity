@@ -1,11 +1,14 @@
 class CreateCrashes < ActiveRecord::Migration
   def self.up
     create_table :crashes do |t|
-      t.integer :application_id
+      t.integer :app_id
       t.string :uuid, :limit => 32
+      t.string :path
       t.string :version, :limit => 16
       t.string :code, :limit => 8
-      t.string :path
+      t.string :osver, :limit => 24
+      t.string :extype, :limit => 32
+      t.string :excode, :limit => 64
       t.timestamps
     end
   end

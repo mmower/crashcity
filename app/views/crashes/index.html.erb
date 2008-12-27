@@ -1,0 +1,11 @@
+<table><% @crashes.each do |crash| %>
+  <tr>
+    <td><%= crash.app.bundle -%></td>
+    <td><%= crash.app.process -%></td>
+    <td><%= crash.version -%></td>
+    <td><%= crash.code -%></td>
+    <td><%= crash.path -%></td>
+    <td><%= crash.extype -%></td>
+    <td><%= crash.excode -%></td>
+  </tr>
+<% end %></table>
