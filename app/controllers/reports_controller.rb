@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   
   BUNDLE_REGEX = Regexp.compile( 'Identifier:\s*([^\r\n]+)', Regexp::MULTILINE )
-  VERSION_REGEX = Regexp.compile( 'Version:\s*([^\r\n]+)', Regexp::MULTILINE )
+  VERSION_REGEX = Regexp.compile( 'Version:\s*([\w\.]+)\s+([^\r\n]+)', Regexp::MULTILINE )
   CODE_REGEX = Regexp.compile( 'Code Type:\s*([^\r\n]+)', Regexp::MULTILINE )
   PATH_REGEX = Regexp.compile( 'Path:\s*([^\r\n]+)', Regexp::MULTILINE )
   OSVER_REGEX = Regexp.compile( 'OS Version:\s*([^\r\n]+)', Regexp::MULTILINE )
@@ -52,6 +52,7 @@ class ReportsController < ApplicationController
     match = VERSION_REGEX.match( report )
     raise unless match
     version = match[1].chomp
+    revision = match[2].chomp[1..-2]
 
     match = CODE_REGEX.match( report )
     raise unless match
@@ -78,6 +79,7 @@ class ReportsController < ApplicationController
 
     crash = app.crashes.create(
                           :version => version,
+                          :revision => revision,
                           :code => code,
                           :path => path,
                           :osver => osver,

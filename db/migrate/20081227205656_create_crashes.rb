@@ -4,7 +4,8 @@ class CreateCrashes < ActiveRecord::Migration
       t.integer :app_id
       t.string :uuid, :limit => 32
       t.string :path
-      t.string :version, :limit => 16
+      t.string :version, :limit => 8
+      t.string :revision, :limit => 16
       t.string :code, :limit => 8
       t.string :osver, :limit => 24
       t.string :extype, :limit => 32

@@ -1,20 +1,26 @@
 <h1>Crashes</h1>
 <h2><%= params[:bundle] %></h2>
-<table><% @crashes.each do |crash| %>
+<table>
   <tr>
     <th>ID</th>
     <th>Version</th>
+    <th>Revision</th>
+    <th>OS</th>
     <th>Code</th>
     <th>Path</th>
     <th>Exception</th>
     <th>Ex. code</th>
   </tr>
-  <tr>
-    <td><%= link_to crash.id, report_path( crash.report ) -%></td>
-    <td><%= crash.version -%></td>
-    <td><%= crash.code -%></td>
-    <td><%= crash.path -%></td>
-    <td><%= crash.extype -%></td>
-    <td><%= crash.excode -%></td>
-  </tr>
-<% end %></table>
+  <% @crashes.each do |crash| %>
+    <tr>
+      <td><%= link_to crash.id, report_path( crash.report ) -%></td>
+      <td><%= crash.version -%></td>
+      <td><%= crash.revision -%></td>
+      <td><%= crash.osver %></td>
+      <td><%= crash.code -%></td>
+      <td><%= crash.path -%></td>
+      <td><%= crash.extype -%></td>
+      <td><%= crash.excode -%></td>
+    </tr>
+  <% end %>
+</table>
