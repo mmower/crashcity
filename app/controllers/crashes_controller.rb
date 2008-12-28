@@ -1,8 +1,11 @@
 class CrashesController < ApplicationController
   def index
     @crashes = if params[:bundle]
-        app = App.find_by_bundle( params[:bundle] )
-        app.crashes
+        if app = App.find_by_bundle( params[:bundle] )
+          app.crashes
+        else
+          []
+        end
       else
         Crash.find( :all )
       end
