@@ -1,6 +1,7 @@
 log/*
 db/*.sql
 db/schema.rb
+db/*.sqlite3
 coverage
 config/database.yml
 config/dev_host.rb
